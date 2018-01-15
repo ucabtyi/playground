@@ -35,6 +35,45 @@ def find_2nd_largest(arr):
     print sec
     return sec
 
+def knap(W, w, v):
+    print "Volume limit: " + str(W)
+    print "weight: " + str(w)
+    print "value: " + str(v)
+    # no of items    nu = len(w)
+    opt = [[0 for x in range(W+1)] for x in range(nu+1)]
+    for i in range(nu+1):
+        for j in range(w[i-1], W+1):
+            if i == 0 or j == 0:
+                opt[i][j] = 0
+                # elif j >= w[i-1]:
+                # corresponding value for ith item is in index i-1
+                # opt[i][j] = max(opt[i-1][j], opt[i-1][j-w[i-1]]+v[i-1])
+                # else:
+                #     opt[i][j] = opt[i-1][j]
+                else:
+                    opt[i][j] = max(opt[i-1][j], opt[i-1][j-w[i-1]]+v[i-1])
+            print opt
+    print opt[nu][W]
+    return opt[nu][W]
+
+
+def knap2(W, w, v):
+    print "Volume limit: " + str(W)
+    print "weight: " + str(w)
+    print "value: " + str(v)
+    # no of items
+    nu = len(w)
+    opt = [0 for x in range(W+1)]
+    for i in range(nu+1):
+        for j in range(W, w[i-1]-1, -1):
+            if i == 0 or j == 0:
+                opt[j] = 0
+                else:
+                    opt[j] = max(opt[j-1], opt[j-w[i-1]]+v[i-1])
+                    print opt
+    print opt[W]
+    return opt[W]
+
 
 def main(args):
     # reverse_sentence(args[0])
