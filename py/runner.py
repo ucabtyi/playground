@@ -39,9 +39,9 @@ def knap(W, w, v):
     print "Volume limit: " + str(W)
     print "weight: " + str(w)
     print "value: " + str(v)
-    # no of items    nu = len(w)
-    opt = [[0 for x in range(W+1)] for x in range(nu+1)]
-    for i in range(nu+1):
+    # no of items    nu = len(w)
+    opt = [[0 for x in range(W+1)] for x in range(nu+1)]
+    for i in range(nu+1):
         for j in range(w[i-1], W+1):
             if i == 0 or j == 0:
                 opt[i][j] = 0
@@ -50,10 +50,10 @@ def knap(W, w, v):
                 # opt[i][j] = max(opt[i-1][j], opt[i-1][j-w[i-1]]+v[i-1])
                 # else:
                 #     opt[i][j] = opt[i-1][j]
-                else:
-                    opt[i][j] = max(opt[i-1][j], opt[i-1][j-w[i-1]]+v[i-1])
-            print opt
-    print opt[nu][W]
+            else:
+                opt[i][j] = max(opt[i-1][j], opt[i-1][j-w[i-1]]+v[i-1])
+            print opt
+    print opt[nu][W]
     return opt[nu][W]
 
 
@@ -61,17 +61,17 @@ def knap2(W, w, v):
     print "Volume limit: " + str(W)
     print "weight: " + str(w)
     print "value: " + str(v)
-    # no of items
+    # no of items
     nu = len(w)
     opt = [0 for x in range(W+1)]
-    for i in range(nu+1):
+    for i in range(nu+1):
         for j in range(W, w[i-1]-1, -1):
             if i == 0 or j == 0:
                 opt[j] = 0
-                else:
-                    opt[j] = max(opt[j-1], opt[j-w[i-1]]+v[i-1])
-                    print opt
-    print opt[W]
+            else:
+                opt[j] = max(opt[j-1], opt[j-w[i-1]]+v[i-1])
+                print opt
+    print opt[W]
     return opt[W]
 
 
